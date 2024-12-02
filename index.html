@@ -7,7 +7,39 @@
   <title>Library-App</title>
 </head>
 <body>
-  
+  <div class="main-wrapper">
+    <dialog id="book-addition">
+      <div class="new-book-form">
+        <div class="input-field-area">
+          <label for="title">Book title:</label>
+          <input type="text" id="title" class="input-field">
+        </div>
+        <div class="input-field-area">
+          <label for="author">Author:</label>
+          <input type="text" id="author" class="input-field">
+        </div>
+        <div class="input-field-area">
+          <label for="pages-number">Number of pages:</label>
+          <input type="tel" id="pages-number" class="input-field">
+        </div>
+        <div class="input-field-area">
+          <label for="read-status">Have you read the book?</label>
+          <div>
+            <input type="radio" name="read-status" id="read-yes" checked><label for="read-yes">Yes</label>
+            <input type="radio" name="read-status" id="read-no"><label for="read-no">No</label>
+          </div>
+        </div>
+        <div class="input-field-area buttons">
+          <button id="save">Save</button>
+          <button id="clear">Clear</button>
+          <button id="close">Close</button>
+        </div>
+      </div>  
+    </dialog>
+    <button id="add-book">Add book</button>
+    <div class="book-cards" id="book-cards">
+    </div>
+  </div>
 </body>
 <script src="script.js"></script>
 </html>
