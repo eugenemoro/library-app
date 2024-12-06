@@ -57,45 +57,46 @@ class DisplayController {
 
   static inintialize() {
     //add book button
-    DisplayController.addBookButton.addEventListener('click', (e) => DisplayController.bookAddition.showModal());
+    this.addBookButton.addEventListener('click', (e) => this.bookAddition.showModal());
 
     //clear form button
-    DisplayController.clearButton.addEventListener('click', (e) => {
-      clearInputs();
+    this.clearButton.addEventListener('click', (e) => {
+      this.clearInputs();
     });
 
     //save form button
-    DisplayController.saveButton.addEventListener('click', (e) => {
-      LibraryController.addBookToLibrary(DisplayController.title.value, DisplayController.author.value, DisplayController.pages.value, DisplayController.read.checked);
-      clearInputs();
-      DisplayController.bookAddition.close();
+    this.saveButton.addEventListener('click', (e) => {
+      LibraryController.addBookToLibrary(this.title.value, this.author.value, this.pages.value, this.read.checked);
+      this.clearInputs();
+      this.bookAddition.close();
     });
 
     //close form button
-    DisplayController.closeButton.addEventListener('click', (e) => {
-      clearInputs();
-      DisplayController.bookAddition.close();
+    this.closeButton.addEventListener('click', (e) => {
+      this.clearInputs();
+      this.bookAddition.close();
     });
 
-    //clear inputs
-    function clearInputs() {
-      DisplayController.title.value = '';
-      DisplayController.author.value = '';
-      DisplayController.pages.value = '';
-      DisplayController.read.checked = true;
-    }
-    DisplayController.showLibrary();
+    this.showLibrary();
+  }
+
+  //clear inputs
+  static clearInputs() {
+    this.title.value = '';
+    this.author.value = '';
+    this.pages.value = '';
+    this.read.checked = true;
   }
 
   static showLibrary() {
-    DisplayController.bookCards.innerHTML = '';
+    this.bookCards.innerHTML = '';
     LibraryController.myLibrary.toReversed().forEach((book) => {
-      DisplayController.addBookCard(book);
+      this.addBookCard(book);
     });
   }
 
   static displayBookCard(bookCard) {
-    DisplayController.bookCards.appendChild(bookCard);
+    this.bookCards.appendChild(bookCard);
   }
 
   static addBookCard(book) {
@@ -144,7 +145,7 @@ class DisplayController {
     newBookCard.appendChild(newBookRead);
     newBookCard.appendChild(newBookButtons);
   
-    DisplayController.displayBookCard(newBookCard);
+    this.displayBookCard(newBookCard);
   }
 }
 
@@ -152,29 +153,29 @@ class LibraryController {
   static myLibrary = [];
   // some initial book-cards
   static inintialize() {
-    LibraryController.myLibrary.push(new Book('The Hobbit', 'J.R.R. Tolkien', 250, false));
-    LibraryController.myLibrary.push(new Book('The Lord of the Rings', 'J.R.R. Tolkien', 1000, true));
+    this.myLibrary.push(new Book('The Hobbit', 'J.R.R. Tolkien', 250, false));
+    this.myLibrary.push(new Book('The Lord of the Rings', 'J.R.R. Tolkien', 1000, true));
   }
 
   static addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages, read);
-    LibraryController.myLibrary.push(newBook);
+    this.myLibrary.push(newBook);
     DisplayController.showLibrary();
   }
   
   static markBookAsRead(e, book) {
-    const bookIndex = LibraryController.myLibrary.findIndex((bookArray) => bookArray === book);
-    LibraryController.myLibrary[bookIndex].read = true;
+    const bookIndex = this.myLibrary.findIndex((bookArray) => bookArray === book);
+    this.myLibrary[bookIndex].read = true;
     if (e) DisplayController.showLibrary();
   }
   
   static deleteBook(e, book) {
-    LibraryController.myLibrary = LibraryController.myLibrary.filter((bookArray) => bookArray !== book);
+    this.myLibrary = this.myLibrary.filter((bookArray) => bookArray !== book);
     if (e) DisplayController.showLibrary();
   }
 
   static get myLibrary() {
-    return LibraryController.myLibrary;
+    return this.myLibrary;
   }
 }
 
