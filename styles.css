@@ -17,6 +17,10 @@ input[type="tel"] {
   box-shadow: 1px 1px 10px darkgrey;
 }
 
+input:invalid {
+  border: 1px solid red;
+}
+
 button {
   appearance: none;
   padding: .5rem 1rem;

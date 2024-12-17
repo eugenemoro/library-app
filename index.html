@@ -9,18 +9,18 @@
 <body>
   <div class="main-wrapper">
     <dialog id="book-addition">
-      <div class="new-book-form">
+      <form class="new-book-form">
         <div class="input-field-area">
           <label for="title">Book title:</label>
-          <input type="text" id="title" class="input-field">
+          <input type="text" id="title" class="input-field" required>
         </div>
         <div class="input-field-area">
           <label for="author">Author:</label>
-          <input type="text" id="author" class="input-field">
+          <input type="text" id="author" class="input-field" required>
         </div>
         <div class="input-field-area">
           <label for="pages-number">Number of pages:</label>
-          <input type="tel" id="pages-number" class="input-field">
+          <input type="tel" id="pages-number" class="input-field" required>
         </div>
         <div class="input-field-area">
           <label for="read-status">Have you read the book?</label>
@@ -30,11 +30,11 @@
           </div>
         </div>
         <div class="input-field-area buttons">
-          <button id="save">Save</button>
-          <button id="clear">Clear</button>
-          <button id="close">Close</button>
+          <button id="save" type="submit">Save</button>
+          <button id="clear" type="button">Clear</button>
+          <button id="close" type="button">Close</button>
         </div>
-      </div>  
+      </form>  
     </dialog>
     <button id="add-book">Add book</button>
     <div class="book-cards" id="book-cards">

@@ -64,11 +64,12 @@ class DisplayController {
       this.clearInputs();
     });
 
-    //save form button
-    this.saveButton.addEventListener('click', (e) => {
+    //form submit
+    this.bookAddition.addEventListener('submit', (e) => {
       LibraryController.addBookToLibrary(this.title.value, this.author.value, this.pages.value, this.read.checked);
       this.clearInputs();
       this.bookAddition.close();
+      e.preventDefault();
     });
 
     //close form button
